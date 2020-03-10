@@ -1,27 +1,27 @@
 // from data.js
 var tableData = data;
-console.log(tableData);
 
 buildTable(tableData)
 
 var button = d3.select("#filter-btn");
 
-button.on("click", function(){
-    var inputElement = d3.select("datetime");
-    console.log(inputElement);
-
-    var inputValue = inputElement.property("value");
-
-    var filteredData = tableData.filter(date_time => date_time.datetime === inputValue);
-    console.log(filteredData);
-
+button.on("click", function() {
+    // Prevent page from refreshing
+    d3.event.preventDefault();
+    // Selects input element and gets HTML node
+    var inputElement = d3.select("#datetime").property("value");
+    
+    // Gets value property of input element
+    // var inputValue = inputElement.property("value");
+    if (inputElement) {
+        var filteredData = tableData.filter(row => row.datetime === inputElement);
+    }
+    buildTable(tableData)    
 });
-
 
 function buildTable(data){
     // querying the table with id 'ufo-table'
     var table = d3.select("tbody");
-    console.log(table);
     table.innerHTML = ''
     // // Referencing the table body
     var newData = ""
