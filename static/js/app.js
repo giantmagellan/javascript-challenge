@@ -20,10 +20,10 @@ button.on("click", function() {
 });
 
 function buildTable(data){
-    // querying the table with id 'ufo-table'
+    // querying the table for 'tbody' tags
     var table = d3.select("tbody");
     table.innerHTML = ''
-    // // Referencing the table body
+    // // Creating an empty variable as string
     var newData = ""
     // loop to create every single row
     for (var j = 0; j < data.length; j++) {
@@ -38,7 +38,11 @@ function buildTable(data){
                         <td>${data[j].durationMinutes}</td>
                         <td>${data[j].comment}</td>
                    </tr>`
+        // append each new row to the table
         newData += row
                 }
     table.html(newData);
 }
+
+
+
